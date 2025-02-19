@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		35CDE67C2D6692B90070F45A /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 35CDE67B2D6692B90070F45A /* SwiftUINavigation */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		35CDE6542D6691E70070F45A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35CDE67C2D6692B90070F45A /* SwiftUINavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = Detoxify;
 			packageProductDependencies = (
+				35CDE67B2D6692B90070F45A /* SwiftUINavigation */,
 			);
 			productName = Detoxify;
 			productReference = 35CDE6412D6691E60070F45A /* Detoxify.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 35CDE6382D6691E60070F45A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				35CDE67A2D6692B90070F45A /* XCRemoteSwiftPackageReference "swift-navigation" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 35CDE6422D6691E60070F45A /* Products */;
 			projectDirPath = "";
@@ -552,6 +561,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		35CDE67A2D6692B90070F45A /* XCRemoteSwiftPackageReference "swift-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-navigation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35CDE67B2D6692B90070F45A /* SwiftUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35CDE67A2D6692B90070F45A /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftUINavigation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 35CDE6392D6691E60070F45A /* Project object */;
 }
