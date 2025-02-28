@@ -7,43 +7,43 @@
 import SwiftUI
 
 struct EditDetoxView: View {
-  @Binding var standup: Detox
+  @Binding var detoxSession: Detox
 
   var body: some View {
     Form {
       Section {
-        TextField("Title", text: self.$standup.title)
+        TextField("Title", text: self.$detoxSession.title)
         HStack {
           Slider(
-            value: self.$standup.duration.seconds,
+            value: self.$detoxSession.duration.seconds,
             in: 5...30, step: 1
           ) {
             Text("Length")
           }
           Spacer()
-          Text(self.standup.duration.formatted(.units()))
+          Text(self.detoxSession.duration.formatted(.units()))
         }
-        ThemePicker(selection: self.$standup.theme)
+        ThemePicker(selection: self.$detoxSession.theme)
       } header: {
         Text("Detox Info")
       }
       Section {
-        ForEach(self.$standup.attendees) { $attendee in
+        ForEach(self.$detoxSession.attendees) { $attendee in
           TextField("Name", text: $attendee.name)
         }
         .onDelete { indices in
-          self.standup.attendees.remove(
+          self.detoxSession.attendees.remove(
             atOffsets: indices
           )
-          if self.standup.attendees.isEmpty {
-            self.standup.attendees.append(
+          if self.detoxSession.attendees.isEmpty {
+            self.detoxSession.attendees.append(
                 Attendee(id: UUID(), name: "")
             )
           }
         }
 
         Button("New attendee") {
-          self.standup.attendees.append(
+          self.detoxSession.attendees.append(
             Attendee(id: UUID(), name: "")
           )
         }
@@ -52,8 +52,8 @@ struct EditDetoxView: View {
       }
     }
     .onAppear {
-      if self.standup.attendees.isEmpty {
-        self.standup.attendees.append(
+      if self.detoxSession.attendees.isEmpty {
+        self.detoxSession.attendees.append(
             Attendee(id: UUID(), name: "")
         )
       }

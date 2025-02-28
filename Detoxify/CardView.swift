@@ -7,21 +7,21 @@
 import SwiftUI
 
 struct CardView: View {
-  let standup: Detox
+  let detoxSession: Detox
 
   var body: some View {
     VStack(alignment: .leading) {
-      Text(self.standup.title)
+      Text(self.detoxSession.title)
         .font(.headline)
       Spacer()
       HStack {
         Label(
-          "\(self.standup.attendees.count)",
+          "\(self.detoxSession.attendees.count)",
           systemImage: "person.3"
         )
         Spacer()
         Label(
-          self.standup.duration.formatted(.units()),
+          self.detoxSession.duration.formatted(.units()),
           systemImage: "clock"
         )
         .labelStyle(.trailingIcon)
@@ -29,7 +29,7 @@ struct CardView: View {
       .font(.caption)
     }
     .padding()
-    .foregroundColor(self.standup.theme.accentColor)
+    .foregroundColor(self.detoxSession.theme.accentColor)
   }
 }
 

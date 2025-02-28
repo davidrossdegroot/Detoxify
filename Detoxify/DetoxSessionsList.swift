@@ -10,7 +10,7 @@ import SwiftUI
 
 final class DetoxSessionsListModel: ObservableObject {
     @Published var destination: Destination?
-    @Published var standups: [Detox]
+    @Published var detoxSessions: [Detox]
     
     @CasePathable
     enum Destination {
@@ -19,11 +19,11 @@ final class DetoxSessionsListModel: ObservableObject {
 
     init(
         // Remove the .mock - just for testing
-        standups: [Detox] = [.mock],
+        detoxSessions: [Detox] = [.mock],
         destination: Destination? = nil
     ) {
       self.destination = destination
-      self.standups = standups
+      self.detoxSessions = detoxSessions
     }
     
     func addDetoxButtonTapped() {
@@ -36,8 +36,8 @@ struct DetoxSessionsList: View {
   var body: some View {
     NavigationStack {
       List {
-          ForEach(self.model.standups) { standup in
-              CardView(standup: standup).listRowBackground(standup.theme.mainColor)
+          ForEach(self.model.detoxSessions) { detoxSession in
+              CardView(detoxSession: detoxSession).listRowBackground(detoxSession.theme.mainColor)
           }
       }
       .toolbar {
@@ -48,9 +48,9 @@ struct DetoxSessionsList: View {
           }
       }
       .navigationTitle("Detox Sessions")
-      .sheet(item: self.$model.destination.add) { $standupModel in
+      .sheet(item: self.$model.destination.add) { $detoxSessionModel in
           NavigationStack {
-              EditDetoxView(standup: $standupModel)
+              EditDetoxView(detoxSession: $detoxSessionModel)
                   .navigationTitle("New Detox Session")
                   .toolbar {
                       ToolbarItem(placement: .cancellationAction) {
@@ -71,7 +71,7 @@ struct DetoxSessionsList: View {
 struct DetoxSessionsList_Previews: PreviewProvider {
   static var previews: some View {
       DetoxSessionsList(model: DetoxSessionsListModel(
-        standups: [
+        detoxSessions: [
             .mock,
         ]
       ))
