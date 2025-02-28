@@ -1,6 +1,6 @@
 //
-//  StandupList.swift
-//  Standups
+//  DetoxList.swift
+//  DetoxSessions
 //
 //  Created by David De Groot on 2/18/25.
 //
@@ -8,31 +8,31 @@
 import SwiftUINavigation
 import SwiftUI
 
-final class StandupsListModel: ObservableObject {
+final class DetoxSessionsListModel: ObservableObject {
     @Published var destination: Destination?
-    @Published var standups: [Standup]
+    @Published var standups: [Detox]
     
     @CasePathable
     enum Destination {
-        case add(Standup)
+        case add(Detox)
     }
 
     init(
         // Remove the .mock - just for testing
-        standups: [Standup] = [.mock],
+        standups: [Detox] = [.mock],
         destination: Destination? = nil
     ) {
       self.destination = destination
       self.standups = standups
     }
     
-    func addStandupButtonTapped() {
-        self.destination = .add(Standup(id: UUID()))
+    func addDetoxButtonTapped() {
+        self.destination = .add(Detox(id: UUID()))
     }
 }
 
-struct StandupsList: View {
-    @ObservedObject var model: StandupsListModel
+struct DetoxSessionsList: View {
+    @ObservedObject var model: DetoxSessionsListModel
   var body: some View {
     NavigationStack {
       List {
@@ -42,7 +42,7 @@ struct StandupsList: View {
       }
       .toolbar {
           Button {
-              self.model.addStandupButtonTapped()
+              self.model.addDetoxButtonTapped()
           } label: {
               Image(systemName: "plus")
           }
@@ -50,7 +50,7 @@ struct StandupsList: View {
       .navigationTitle("Detox Sessions")
       .sheet(item: self.$model.destination.add) { $standupModel in
           NavigationStack {
-              EditStandupView(standup: $standupModel)
+              EditDetoxView(standup: $standupModel)
                   .navigationTitle("New Detox Session")
                   .toolbar {
                       ToolbarItem(placement: .cancellationAction) {
@@ -68,9 +68,9 @@ struct StandupsList: View {
   }
 }
 
-struct StandupsList_Previews: PreviewProvider {
+struct DetoxSessionsList_Previews: PreviewProvider {
   static var previews: some View {
-      StandupsList(model: StandupsListModel(
+      DetoxSessionsList(model: DetoxSessionsListModel(
         standups: [
             .mock,
         ]

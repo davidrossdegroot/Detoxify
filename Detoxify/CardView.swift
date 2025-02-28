@@ -1,13 +1,13 @@
 //
 //  CardView.swift
-//  Standups
+//  DetoxSessions
 //
 //  Created by David De Groot on 2/18/25.
 //
 import SwiftUI
 
 struct CardView: View {
-  let standup: Standup
+  let standup: Detox
 
   var body: some View {
     VStack(alignment: .leading) {

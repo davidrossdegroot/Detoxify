@@ -1,13 +1,13 @@
 //
 //  SwiftUIView.swift
-//  Standups
+//  DetoxSessions
 //
 //  Created by David De Groot on 2/19/25.
 //
 import SwiftUI
 
-struct EditStandupView: View {
-  @Binding var standup: Standup
+struct EditDetoxView: View {
+  @Binding var standup: Detox
 
   var body: some View {
     Form {
@@ -25,7 +25,7 @@ struct EditStandupView: View {
         }
         ThemePicker(selection: self.$standup.theme)
       } header: {
-        Text("Standup Info")
+        Text("Detox Info")
       }
       Section {
         ForEach(self.$standup.attendees) { $attendee in

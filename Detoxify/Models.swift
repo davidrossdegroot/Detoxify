@@ -1,13 +1,13 @@
 //
 //  Models.swift
-//  Standups
+//  DetoxSessions
 //
 //  Created by David De Groot on 2/18/25.
 //
 
 import SwiftUI
 
-struct Standup: Equatable, Identifiable, Codable {
+struct Detox: Equatable, Identifiable, Codable {
   let id: UUID
   var attendees: [Attendee] = []
   var duration = Duration.seconds(60 * 5)
@@ -84,7 +84,7 @@ enum Theme:
   var name: String { self.rawValue.capitalized }
 }
 
-extension Standup {
+extension Detox {
   static let mock = Self(
     id: UUID(),
     attendees: [
